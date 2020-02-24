@@ -15,6 +15,7 @@ public partial class AnEquipment : System.Web.UI.Page
 
     protected void tbnOK_Click(object sender, EventArgs e)
     {
+   
 
     }
 
