@@ -117,11 +117,11 @@ namespace Gym_Testing
             //boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 customerID = 21;
+            Int32 customerID = 1;
             //invoke the method
             Found = Ancustomer.Find(customerID);
             //check the address no
-            if (Ancustomer.customerID != 21)
+            if (Ancustomer.customerID != 1)
             {
                 OK = false;
             }
@@ -139,11 +139,11 @@ namespace Gym_Testing
             //boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 customerID = 21;
+            Int32 customerID = 1;
             //invoke the method
             Found = Ancustomer.Find(customerID);
             //check the property
-            if (Ancustomer.DateAdded != Convert.ToDateTime("8/9/2019"))
+            if (Ancustomer.DateAdded != Convert.ToDateTime("03/03/2020"))
             {
                 OK = false;
             }
@@ -161,11 +161,11 @@ namespace Gym_Testing
             //boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 customerID = 21;
+            Int32 customerID = 1;
             //invoke the method
             Found = Ancustomer.Find(customerID);
             //check the property
-            if (Ancustomer.customerUserName != "mohammed99")
+            if (Ancustomer.customerUserName != "Mohammed99")
             {
                 OK = false;
             }
@@ -183,7 +183,7 @@ namespace Gym_Testing
             //boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 customerID = 21;
+            Int32 customerID = 1;
             //invoke the method
             Found = Ancustomer.Find(customerID);
             //check the property
@@ -205,7 +205,7 @@ namespace Gym_Testing
             //boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 customerID = 21;
+            Int32 customerID = 1;
             //invoke the method
             Found = Ancustomer.Find(customerID);
             //check the property
@@ -227,7 +227,7 @@ namespace Gym_Testing
             //boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 customerID = 21;
+            Int32 customerID = 1;
             //invoke the method
             Found = Ancustomer.Find(customerID);
             //check the property

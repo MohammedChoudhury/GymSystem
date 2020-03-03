@@ -13,6 +13,7 @@ using System.Data;
 
 namespace GymClasses
 {
+
     public class clsDataConnection
     {
         //connection object used to connect to the database
@@ -216,4 +217,4 @@ namespace GymClasses
             }
         }
     }
-}//this closes the namespace!
+}
