@@ -39,4 +39,27 @@ public partial class AnCustomer : System.Web.UI.Page
     {
 
     }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        //create an instance of the customer class
+        clsCustomer AnCustomer = new clsCustomer();
+        //variable to store the primry key
+        Int32 customerID;
+        //variable to store the results of the find operation
+        Boolean Found = false;
+        //get the primary key enterred by the user
+        customerID = Convert.ToInt32(txtCustomerID.Text);
+        //find the record
+        Found = AnCustomer.Find(customerID);
+        //if found
+        if (Found == true)
+        {
+            //display the values of the propertiy in the form
+            txtCustomerFN.Text = AnCustomer.customerFirstName;
+            txtCustomerLN.Text = AnCustomer.customerlastName;
+            txtCustomerUN.Text = AnCustomer.customerUserName;
+            txtDateAdded.Text = AnCustomer.DateAdded.ToString();
+        }
+    }
 }

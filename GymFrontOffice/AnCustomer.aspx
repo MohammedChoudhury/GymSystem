@@ -11,6 +11,7 @@
         <div>
             Customer ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
+            <asp:Button ID="btnFind" runat="server" OnClick="Button1_Click" Text="Find" Width="60px" />
             <br />
             <br />
             Customer Username&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
