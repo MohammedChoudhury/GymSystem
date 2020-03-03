@@ -7,6 +7,10 @@ namespace Gym_Testing
     [TestClass]
     public class tstEquipment
     {
+        
+    
+
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -85,5 +89,106 @@ namespace Gym_Testing
             Assert.AreEqual(AnEquipment.EquipmentAvailable, TestData);
         }
 
+
+
+        public int EquipmentNo { get; private set; }
+
+        [TestMethod]
+        public void FindMethodTest()
+        {
+            clsEquipment AnEquipment = new clsEquipment();
+            Boolean Found = false;
+            Int32 EquipmentNo = 1;
+            Found = AnEquipment.Find(EquipmentNo);
+            Assert.IsTrue(Found);
+
+        }
+        [TestMethod]
+        public void TestEquipmentNoFound()
+        {
+
+            clsEquipment AnEquipment = new clsEquipment();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 EquipmentNo = 21;
+            Found = AnEquipment.Find(EquipmentNo);
+            if (AnEquipment.EquipmentNo != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void TestEquipmentDateAdded()
+        {
+            clsEquipment AnEquipment = new clsEquipment();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 EquipmentNo = 21;
+            Found = AnEquipment.Find(EquipmentNo);
+            if (AnEquipment.EquipmentDateAdded != Convert.ToDateTime("16/09/2015"))
+            {
+                OK = false;
+
+            }
+
+        }
+        [TestMethod]
+        public void TestEquipmentDescription()
+        {
+            clsEquipment AnEquipment = new clsEquipment();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 EquipmentNo = 1;
+            Found = AnEquipment.Find(EquipmentNo);
+            if (AnEquipment.EquipmentDescription != "black")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(Found);
+
+        }
+        [TestMethod]
+        public void TestEquipmentColour()
+        {
+            clsEquipment AnEquipment = new clsEquipment();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 EquipmentNo = 1;
+            Found = AnEquipment.Find(EquipmentNo);
+            if (AnEquipment.EquipmentColour != "black")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(Found);
+            
+        }
+        [TestMethod]
+        public void TestEquipmentPrice()
+        {
+            clsEquipment AnEquipment = new clsEquipment();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 EquipmentNo = 1;
+            Found = AnEquipment.Find(EquipmentNo);
+            if (AnEquipment.EquipmentPrice != 2500)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(Found);
+
+        }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsEquipment AnEquipment = new clsEquipment();
+            
+        }
+        
     }
+
 }
+
+
+
