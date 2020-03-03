@@ -36,13 +36,13 @@ namespace GymClasses
 
 
         private bool mOrderProcessed;
-        public bool OrderProcessed 
+        public bool OrderProcessed
         {
             get
             {
                 return mOrderProcessed;
             }
-    set
+            set
             {
 
                 mOrderProcessed = value;
@@ -103,7 +103,7 @@ namespace GymClasses
             }
         }
 
-        
+
 
         public bool Find(int OrderNo)
         {
@@ -115,11 +115,11 @@ namespace GymClasses
             {
 
                 mOrderNo = Convert.ToInt32(DB.DataTable.Rows[0]["OrderNo"]);
-                mEquipmentOrdered = Convert.ToString(DB.DataTable.Rows[0]["Protein Powder"]);
-                mTotalCost = Convert.ToInt16(DB.DataTable.Rows[0]["20"]);
-                mCustomerName = Convert.ToString(DB.DataTable.Rows[0]["Mary Jones"]);
-                mOrderProcessed = Convert.ToBoolean(DB.DataTable.Rows[0][1]);
-                mDateProcessed = Convert.ToDateTime("16/09/2019");
+                mEquipmentOrdered = Convert.ToString(DB.DataTable.Rows[0]["EquipmentOrdered"]);
+                mTotalCost = Convert.ToInt16(DB.DataTable.Rows[0]["TotalCost"]);
+                mCustomerName = Convert.ToString(DB.DataTable.Rows[0]["CustomerName"]);
+                mOrderProcessed = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderProcessed]);
+                mDateProcessed = Convert.ToDateTime(DB.DataTable.Rows[0]["16/09/2019"]);
 
                 return true;
             }
@@ -127,24 +127,20 @@ namespace GymClasses
             {
                 return false;
             }
-
-
-
-
-
-        }
-
-        public string Valid(int orderNo, string customerName, string equipmentOrdered, bool orderProcessed, DateTime dateProcessed, int totalCost)
-        {
-            return "";
         }
 
       
+        public string Valid(string customerName, string equipmentOrdered, bool orderProcessed, string orderNo, DateTime dateProcessed)
+{
+            String Error = "";
+                if (orderNo.Equals(0))
+                {
+                Error = Error + "The order no may not be blank: ";
+                }
+            return Error;
+            }
 
-
-
-
-
+       
 
 
 
@@ -152,4 +148,22 @@ namespace GymClasses
 
 
     }
-}
+
+
+    }
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

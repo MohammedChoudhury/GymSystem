@@ -221,7 +221,45 @@ namespace Gym_Testing
             Assert.AreEqual(Error, "");
         }
 
-      
+
+        [TestMethod]
+
+        public void OrderNoMinLessOne()
+        {
+
+            clsOrderLine anOrderLine = new clsOrderLine();
+            string Error = "";
+            int OrderNo = 0;
+            Error = anOrderLine.Valid(OrderNo, CustomerName, EquipmentOrdered, OrderProcessed, DateProcessed, TotalCost);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+            public void OrderNoMin()
+            {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            int OrderNo = 1;
+            Error = anOrderLine.Valid(OrderNo, CustomerName, EquipmentOrdered, OrderProcessed, DateProcessed, TotalCost);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void OrderNoMinPlusOne()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            int OrderNo = 11;
+            Error = anOrderLine.Valid(OrderNo, CustomerName, EquipmentOrdered, OrderProcessed, DateProcessed, TotalCost);
+            Assert.AreEqual(Error, "");
+
+        }
+
+
+
+
+    }
 
 
 
