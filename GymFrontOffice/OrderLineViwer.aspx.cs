@@ -23,7 +23,7 @@ public partial class OrderLineViwer : System.Web.UI.Page
         //display the customer name
         Response.Write(AnOrderLine.CustomerName);
         //display the date ordered
-        Response.Write(AnOrderLine.DateOrdered);
+        Response.Write(AnOrderLine.DateProcessed);
         //display if ordered proccessed
         Response.Write(AnOrderLine.OrderProcessed);
 

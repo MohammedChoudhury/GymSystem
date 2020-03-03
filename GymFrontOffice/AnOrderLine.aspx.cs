@@ -10,7 +10,9 @@ public partial class AnOrderLine : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        clsOrderLine anOrderLine = new clsOrderLine();
+        anOrderLine = (clsOrderLine)Session["AnOrderLine"];
+        Response.Write(anOrderLine.OrderNo);
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -26,7 +28,7 @@ public partial class AnOrderLine : System.Web.UI.Page
         //capture customer name
         AnOrderLine.CustomerName = txtCustomerName.Text;
         //capture date ordered
-        AnOrderLine.DateOrdered = Convert.ToDateTime(txtDateAdded.Text);
+        AnOrderLine.DateProcessed = Convert.ToDateTime(txtDateAdded.Text);
         //store the address in the session object
         Session["AnOrderLine"] = AnOrderLine;
         //redirect to the viewer page
