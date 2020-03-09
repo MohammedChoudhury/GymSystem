@@ -116,5 +116,10 @@ namespace GymClasses
                 return false;
             }
         }
+
+        public string Valid(string equipmentDescription, string equipmentColour, string equipmentDateAdded, int equipmentPrice)
+        {
+            return "";
+        }
     }
 }
