@@ -14,9 +14,7 @@ public partial class EquipmentViewer : System.Web.UI.Page
         clsEquipment AnEquipment = new clsEquipment();
         //get the data from session object 
         AnEquipment = (clsEquipment)Session["AnEquipment"];
-        //display the equipment id
-        Response.Write(AnEquipment.EquipmentNo);
-        //display the equipment descritopn
+                //display the equipment descritopn
         Response.Write(AnEquipment.EquipmentDescription);
         //display the equipment colour
         Response.Write(AnEquipment.EquipmentColour);

@@ -9,16 +9,17 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            Equipment ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtEquipmentID" runat="server"></asp:TextBox>
+            Equipment No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:TextBox ID="txtEquipmentNo" runat="server"></asp:TextBox>
+            <asp:Button ID="tbnFind" runat="server" Text="Find" OnClick="tbnFind_Click" Width="60px" />
             <br />
             <br />
             Equipment Description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtEquipmentDes" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtEquipmentDescription" runat="server"></asp:TextBox>
             <br />
             <br />
             Equipment Colour&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtEquipmentClr" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtEquipmentColour" runat="server"></asp:TextBox>
             <br />
             <br />
             Equipment Date Added&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtDateAdded" runat="server"></asp:TextBox>

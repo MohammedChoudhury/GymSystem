@@ -6,6 +6,11 @@ namespace GymClasses
     {
         public bool Find(int EquipmentNo)
         {
+            mEquipmentNo = 1;
+            mEquipmentDateAdded = Convert.ToDateTime("01 / 01 / 2020");
+            mEquipmentDescription = "Weights";
+            mEquipmentColour = "Black";
+            mEquipmentPrice = 100;
             return true;
 
         }
@@ -116,5 +121,29 @@ namespace GymClasses
                 return false;
             }
         }
+
+        
+
+        public string Valid(string EquipmentDescription, string EquipmentColour, string EquipmentDateAdded, int EquipmentPrice)
+        {
+            string Error = "";
+            DateTime DateTemp;
+            if (EquipmentDescription.Length == 0)
+            {
+                Error = Error + "The Equipment Number may not be blank : ";
+            
+            }
+            if(EquipmentDescription.Length > 51)
+            {
+                Error = Error + "The Equipment Number must be less than 51 : ";
+            }
+            DateTemp = Convert.ToDateTime(EquipmentDateAdded);
+            if (DateTemp < DateTime.Now.Date)
+            {
+                Error = Error + "The date cannot be in the past : ";
+            }
+            return Error;
+        }
+
     }
 }
