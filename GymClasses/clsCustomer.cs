@@ -102,12 +102,12 @@ namespace GymClasses
             //if one record is found (there should be either one or zero
             if (DB.Count == 1)
             {
-                mcustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["customerID"]);
+                mcustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
                 mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
-                mcustomerActive = Convert.ToBoolean(DB.DataTable.Rows[0]["customerActive"]);
-                mcustomerFirstName = Convert.ToString(DB.DataTable.Rows[0]["customerFirstName"]);
-                mcustomerlastName = Convert.ToString(DB.DataTable.Rows[0]["customerlastName"]);
-                mcustomerUserName = Convert.ToString(DB.DataTable.Rows[0]["customerUserName"]);
+                mcustomerActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                mcustomerFirstName = Convert.ToString(DB.DataTable.Rows[0]["CustomerFirstName"]);
+                mcustomerlastName = Convert.ToString(DB.DataTable.Rows[0]["CustomerLastName"]);
+                mcustomerUserName = Convert.ToString(DB.DataTable.Rows[0]["CustomerUserName"]);
                 //return that everything worked OK
                 return true;
             }

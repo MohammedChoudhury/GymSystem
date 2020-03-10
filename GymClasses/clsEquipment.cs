@@ -122,6 +122,7 @@ namespace GymClasses
             }
         }
 
+
         
 
         public string Valid(string EquipmentDescription, string EquipmentColour, string EquipmentDateAdded, int EquipmentPrice)
@@ -144,6 +145,7 @@ namespace GymClasses
             }
             return Error;
         }
+
 
     }
 }
