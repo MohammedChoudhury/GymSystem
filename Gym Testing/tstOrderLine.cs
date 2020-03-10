@@ -12,8 +12,7 @@ namespace Gym_Testing
         string CustomerName = "Mary Jones";
         string EquipmentOrdered = "Protein powder";
         int TotalCost = 20;
-        bool OrderProcessed = true;
-        DateTime DateProcessed = DateTime.Now.Date;
+        string DateProcessed = DateTime.Now.Date.ToString();
 
 
         [TestMethod]
@@ -217,7 +216,7 @@ namespace Gym_Testing
         {
             clsOrderLine anOrderLine = new clsOrderLine();
             String Error = "";
-            Error = anOrderLine.Valid(OrderNo, CustomerName, EquipmentOrdered, OrderProcessed, DateProcessed, TotalCost);
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
             Assert.AreEqual(Error, "");
         }
 
@@ -230,7 +229,7 @@ namespace Gym_Testing
             clsOrderLine anOrderLine = new clsOrderLine();
             string Error = "";
             int OrderNo = 0;
-            Error = anOrderLine.Valid(OrderNo, CustomerName, EquipmentOrdered, OrderProcessed, DateProcessed, TotalCost);
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -240,7 +239,7 @@ namespace Gym_Testing
             clsOrderLine anOrderLine = new clsOrderLine();
             String Error = "";
             int OrderNo = 1;
-            Error = anOrderLine.Valid(OrderNo, CustomerName, EquipmentOrdered, OrderProcessed, DateProcessed, TotalCost);
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
             Assert.AreEqual(Error, "");
 
         }
@@ -251,14 +250,417 @@ namespace Gym_Testing
             clsOrderLine anOrderLine = new clsOrderLine();
             String Error = "";
             int OrderNo = 11;
-            Error = anOrderLine.Valid(OrderNo, CustomerName, EquipmentOrdered, OrderProcessed, DateProcessed, TotalCost);
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
             Assert.AreEqual(Error, "");
+        }
 
+
+        [TestMethod]
+        public void OrderNoMid()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            int OrderNo = 111;
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreEqual(Error, "");
+        }
+
+
+
+        [TestMethod]
+        public void OrderNoMax()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            int OrderNo = 111111;
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void OrderNoMaxLessOne()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            int OrderNo = 11111;
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreEqual(Error, "");
+        }
+
+    
+
+
+        [TestMethod]
+        public void OrderNoMaxPlusOne()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            int OrderNo = 1111111;
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreNotEqual(Error, "");
         }
 
 
 
 
+
+        [TestMethod]
+
+        public void TotalCostMinLessOne()
+        {
+
+            clsOrderLine anOrderLine = new clsOrderLine();
+            string Error = "";
+            int TotalCost = 0;
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TotalCostMin()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            int TotalCost = 1;
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void TotalCostMinPlusOne()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            int TotalCost = 11;
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void TotalCostMid()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            int TotalCost = 111;
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreEqual(Error, "");
+        }
+
+
+
+        [TestMethod]
+        public void TotalCostMax()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            int TotalCost = 111111;
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void TotalCostMaxLessOne()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            int TotalCost = 11111;
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreEqual(Error, "");
+        }
+
+
+
+
+        [TestMethod]
+        public void TotalCostMaxPlusOne()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            int TotalCost = 1111111;
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+
+       
+
+
+
+        [TestMethod]
+        public void DateOrderedExtremeMin()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+            string DateOrdered = TestDate.ToString();
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void DateOrderedMinLessOne()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-1);
+            String DateOrdered = TestDate.ToString();
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOrderedMin()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string DateOrdered = TestDate.ToString();
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOrderedMinPlusOne()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(1);
+            string DateOrdered = TestDate.ToString();
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOrderedExtremeMax()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            string DateOrdered = TestDate.ToString();
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void DateOrderedInvalidData()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            string DateProcessed = "this is not a date!";
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CustomerNameMinLessOne()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            string CustomerName = "";
+
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+
+
+        [TestMethod]
+        public void CustomerNameMin()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            string CustomerName = "a";
+
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreEqual(Error, "");
+        }
+
+
+
+
+        [TestMethod]
+        public void CustomerNameMinPlusOne()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            string CustomerName = "aa";
+
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreEqual(Error, "");
+        }
+
+
+
+        [TestMethod]
+        public void CustomerNameMaxLessOne()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            string CustomerName = "";
+  
+        CustomerName = CustomerName.PadRight(49, 'a');
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void CustomerNameMax()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            string CustomerName = "";
+     
+        CustomerName = CustomerName.PadRight(50, 'a');
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreEqual(Error, "");
+        }
+
+
+
+
+        [TestMethod]
+        public void CustomerNameMaxPlusOne()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            string CustomerName = "";
+
+        CustomerName = CustomerName.PadRight(51, 'a');
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+
+
+        [TestMethod]
+        public void CustomerNameMid()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            string CustomerName = "";
+
+            CustomerName = CustomerName.PadRight(25, 'a');
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+
+
+        public void EquipmentOrderedMinLessOne()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            string EquipmentOrdered = "";
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+
+
+        [TestMethod]
+        public void EquipmentOrderedMin()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            string EquipmentOrdered = "a";
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreEqual(Error, "");
+        }
+
+
+
+        [TestMethod]
+        public void EquipmentOrderedMinPlusOne()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            string EquipmentOrdered = "aa";
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreEqual(Error, "");
+        }
+
+
+
+        [TestMethod]
+        public void EquipmentOrderedMaxLessOne()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            string EquipmentOrdered = "";
+            EquipmentOrdered = EquipmentOrdered.PadRight(49, 'a');
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreEqual(Error, "");
+        }
+
+
+
+
+        [TestMethod]
+        public void EquipmentOrderedMax()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            string EquipmentOrdered = "";
+            EquipmentOrdered = EquipmentOrdered.PadRight(50,  'a');
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreEqual(Error, "");
+        }
+
+
+
+
+
+        [TestMethod]
+        public void EquipmentOrderedMaxPlusOne()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            string EquipmentOrdered = "";
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+
+
+
+        [TestMethod]
+        public void EquipmentOrderedMid()
+        {
+            clsOrderLine anOrderLine = new clsOrderLine();
+            String Error = "";
+            string EquipmentOrdered = "";
+            EquipmentOrdered = EquipmentOrdered.PadRight(25, 'a');
+            Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+            Assert.AreEqual(Error, "");
+        }
+
+
+
+
+
     }
 
 
@@ -268,10 +670,10 @@ namespace Gym_Testing
 
 
 
-
-    }
 
 }
+
+
 
 
 
