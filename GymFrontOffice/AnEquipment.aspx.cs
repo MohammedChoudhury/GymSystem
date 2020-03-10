@@ -17,12 +17,13 @@ public partial class AnEquipment : System.Web.UI.Page
     {
         //create a new instance of clsEquipment
         clsEquipment AnEquipment = new clsEquipment();
-        //capture the equipment id
-        AnEquipment.EquipmentNo = int.Parse(txtEquipmentID.Text);
+                
         //capture the equipment description 
-        AnEquipment.EquipmentDescription = txtEquipmentDes.Text;
+        AnEquipment.EquipmentDescription = txtEquipmentDescription.Text;
+        AnEquipment.EquipmentNo = int.Parse(txtEquipmentNo.Text);
+
         //capture the equipment colour
-        AnEquipment.EquipmentColour = txtEquipmentClr.Text;
+        AnEquipment.EquipmentColour = txtEquipmentColour.Text;
         //capture date added
         AnEquipment.EquipmentDateAdded = Convert.ToDateTime(txtDateAdded.Text);
         //capture the equipment price
@@ -40,4 +41,26 @@ public partial class AnEquipment : System.Web.UI.Page
     {
 
     }
+   
+
+    protected void tbnFind_Click(object sender, EventArgs e)
+    {
+        clsEquipment AnEquipment = new clsEquipment();
+        Int32 EquipmentNo;
+        
+        Boolean Found = false;
+        EquipmentNo = Convert.ToInt32(txtEquipmentNo.Text);
+        
+        Found = AnEquipment.Find(EquipmentNo);
+        if (Found == true)
+        {
+            txtEquipmentPrice.Text = AnEquipment.EquipmentPrice.ToString();
+            txtDateAdded.Text = AnEquipment.EquipmentDateAdded.ToString();
+            txtEquipmentColour.Text = AnEquipment.EquipmentColour;
+            txtDateAdded.Text = AnEquipment.EquipmentDateAdded.ToString();
+            txtEquipmentDescription.Text = AnEquipment.EquipmentDescription;
+
+        }
+    }
 }
+
