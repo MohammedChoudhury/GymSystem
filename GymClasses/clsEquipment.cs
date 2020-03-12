@@ -41,6 +41,8 @@ namespace GymClasses
             }
         }
 
+        
+
         private DateTime mEquipmentDateAdded;
         public DateTime EquipmentDateAdded
         {
@@ -142,6 +144,24 @@ namespace GymClasses
             if (DateTemp < DateTime.Now.Date)
             {
                 Error = Error + "The date cannot be in the past : ";
+            }
+            if (EquipmentColour.Length == 0)
+            {
+                Error = Error + "The Equipment Number may not be blank : ";
+
+            }
+            if (EquipmentColour.Length > 21)
+            {
+                Error = Error + "The Equipment Number must be less than 21 : ";
+            }
+            if (EquipmentPrice == 0)
+            {
+                Error = Error + "The Equipment Number may not be blank : ";
+
+            }
+            if (EquipmentPrice > 901)
+            {
+                Error = Error + "The Equipment Number must be less than 901 : ";
             }
             return Error;
         }
