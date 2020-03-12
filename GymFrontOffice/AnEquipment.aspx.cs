@@ -17,21 +17,26 @@ public partial class AnEquipment : System.Web.UI.Page
     {
         //create a new instance of clsEquipment
         clsEquipment AnEquipment = new clsEquipment();
-                
-        //capture the equipment description 
-        AnEquipment.EquipmentDescription = txtEquipmentDescription.Text;
-        AnEquipment.EquipmentNo = int.Parse(txtEquipmentNo.Text);
-
-        //capture the equipment colour
-        AnEquipment.EquipmentColour = txtEquipmentColour.Text;
-        //capture date added
-        AnEquipment.EquipmentDateAdded = Convert.ToDateTime(txtDateAdded.Text);
-        //capture the equipment price
-        AnEquipment.EquipmentPrice = int.Parse(txtEquipmentPrice.Text);
-        //store the address in the session object
-        Session["AnEquipment"] = AnEquipment;
-        //redirect to the viewer page
-        Response.Redirect("EquipmentViewer.aspx");
+        string EquipmentDescription = txtEquipmentDescription.Text;
+        string EquipmentColour = txtEquipmentColour.Text;
+        string EquipmentDateAdded = txtDateAdded.Text;
+        string EquipmentPrice = txtEquipmentPrice.Text;
+        string Error = "";
+        Error = AnEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
+        if (Error == "")
+        {
+            AnEquipment.EquipmentDescription = EquipmentDescription;
+            AnEquipment.EquipmentColour = EquipmentColour;
+            AnEquipment.EquipmentDateAdded = Convert.ToDateTime(EquipmentDateAdded);
+            AnEquipment.EquipmentPrice = Convert.ToInt32(EquipmentPrice);
+            Session["AnEquipment"] = AnEquipment;
+            Response.Write("EquipmentViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+        Response.Write("EquipmentViewer.aspx");
 
 
 

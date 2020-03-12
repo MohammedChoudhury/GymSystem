@@ -13,7 +13,7 @@ namespace Gym_Testing
         int EquipmentPrice = 100;
         string EquipmentDateAdded = "01 / 01 / 2020";
 
-        
+
 
 
         [TestMethod]
@@ -95,8 +95,8 @@ namespace Gym_Testing
         }
 
 
-    
-       
+
+
 
         [TestMethod]
         public void FindMethodTest()
@@ -186,7 +186,6 @@ namespace Gym_Testing
 
 
         [TestMethod]
-
         public void ValidMethodOK()
         {
             clsEquipment anEquipment = new clsEquipment();
@@ -197,7 +196,6 @@ namespace Gym_Testing
 
 
         [TestMethod]
-
         public void EquipmentDescriptionMinLessOne()
         {
 
@@ -317,7 +315,7 @@ namespace Gym_Testing
             //convert the date variable to a string variable
             string EquipmentDateAdded = TestDate.ToString();
             //invoke the method
-            Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);           
+            Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -341,104 +339,181 @@ namespace Gym_Testing
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
-
-      
-        }
-
-
         [TestMethod]
-
-        public void EquipmentDescriptionMinLessOne()
+        public void EquipmentColourMinLessOne()
         {
 
             clsEquipment anEquipment = new clsEquipment();
             string Error = "";
-            string EquipmentDescription = "0";
+            string EquipmentColour = "";
             Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
         }
 
         [TestMethod]
-        public void EquipmentDescriptionMin()
+        public void EquipmentColourMin()
         {
             clsEquipment anEquipment = new clsEquipment();
             String Error = "";
-            string EquipmentDescription = "a";
-            Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
-
-        }
-
-        [TestMethod]
-        public void EquipmentDescriptionMinPlusOne()
-        {
-            clsEquipment anEquipment = new clsEquipment();
-            String Error = "";
-            string EquipmentDescription = "aa";
+            string EquipmentColour = "a";
             Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
 
         }
         [TestMethod]
-        public void EquipmentDescriptionMaxLessOne()
+        public void EquipmentColourMinPlusOne()
+        {
+            clsEquipment anEquipment = new clsEquipment();
+            String Error = "";
+            string EquipmentColour = "aa";
+            Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
+        }
+        [TestMethod]
+        public void EquipmentColourMaxLessOne()
         {
 
             clsEquipment anEquipment = new clsEquipment();
             String Error = "";
-            string EquipmentDescription = "";
-            EquipmentDescription.PadRight(49, 'a');
+            string EquipmentColour = "";
+            EquipmentColour.PadRight(19, 'a');
 
             Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void EquipmentDescriptionExtremeMax()
+        public void EquipmentColourExtremeMax()
         {
 
             clsEquipment anEquipment = new clsEquipment();
             String Error = "";
-            string EquipmentDescription = "";
-            EquipmentDescription.PadRight(500, 'a');
+            string EquipmentColour = "";
+            EquipmentColour.PadRight(500, 'a');
 
             Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void EquipmentDescriptionMax()
+        public void EquipmentColourMax()
         {
 
             clsEquipment anEquipment = new clsEquipment();
             String Error = "";
-            string EquipmentDescription = "";
-            EquipmentDescription.PadRight(50, 'a');
+            string EquipmentColour = "";
+            EquipmentColour.PadRight(20, 'a');
 
             Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void EquipmentDescriptionMaxPlusOne()
+        public void EquipmentColourMaxPlusOne()
         {
 
             clsEquipment anEquipment = new clsEquipment();
             String Error = "";
             string EquipmentDescription = "";
-            EquipmentDescription.PadRight(51, 'a');
+            EquipmentDescription.PadRight(21, 'a');
 
             Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void EquipmentDescriptionMid()
+        public void EquipmentColourMid()
         {
 
             clsEquipment anEquipment = new clsEquipment();
             String Error = "";
-            string EquipmentDescription = "";
-            EquipmentDescription.PadRight(25, 'a');
+            string EquipmentColour = "";
+            EquipmentColour.PadRight(10, 'a');
 
             Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
             Assert.AreNotEqual(Error, "");
         }
+        
 
+        [TestMethod]
+
+        public void EquipmentPriceMinLessOne()
+        {
+
+            clsEquipment anEquipment = new clsEquipment();
+            string Error = "";
+            int EquipmentPrice = 0;
+            Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void EquipmentPriceMin()
+        {
+
+            clsEquipment anEquipment = new clsEquipment();
+            string Error = "";
+            int EquipmentPrice = 100;
+            Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        public void EquipmentPriceMinPlusOne()
+        {
+
+            clsEquipment anEquipment = new clsEquipment();
+            string Error = "";
+            int EquipmentPrice = 101;
+            Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        public void EquipmentPriceMaxLessOne()
+        {
+
+            clsEquipment anEquipment = new clsEquipment();
+            string Error = "";
+            int EquipmentPrice = 899;
+            Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        public void EquipmentPriceMax()
+        {
+
+            clsEquipment anEquipment = new clsEquipment();
+            string Error = "";
+            int EquipmentPrice = 900;
+            Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        public void EquipmentPriceMaxPlusOne()
+        {
+
+            clsEquipment anEquipment = new clsEquipment();
+            string Error = "";
+            int EquipmentPrice = 901;
+            Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        public void EquipmentPriceMid()
+        {
+
+            clsEquipment anEquipment = new clsEquipment();
+            string Error = "";
+            int EquipmentPrice = 450;
+            Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+        public void EquipmentPriceExtremeMax()
+        {
+
+            clsEquipment anEquipment = new clsEquipment();
+            string Error = "";
+            int EquipmentPrice = 1000;
+            Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
+            Assert.AreNotEqual(Error, "");
+        }
     }
-}
+    }
+
+
+    
+
+
+
 
 
 

@@ -39,6 +39,7 @@
             <asp:Button ID="tbnCancel" runat="server" Text="Cancel" OnClick="tbnCancel_Click" Width="60px" />
             <br />
         </div>
+        <asp:Label ID="lblError" runat="server" Text=" No Errors"></asp:Label>
     </form>
 </body>
 </html>
