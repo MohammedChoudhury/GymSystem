@@ -18,22 +18,33 @@ public partial class AnOrderLine : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         //create a new instance of clsOrderline
-        clsOrderLine AnOrderLine = new clsOrderLine();
+        clsOrderLine anOrderLine = new clsOrderLine();
         //capture the order no
-        AnOrderLine.OrderNo = int.Parse(txtOrderNo.Text);
+        int OrderNo = int.Parse(txtOrderNo.Text);
         //capture the equipment ordered 
-        AnOrderLine.EquipmentOrdered = txtEquipmentOrdered.Text;
+        string EquipmentOrdered = txtEquipmentOrdered.Text;
         //capture the total cost
-        AnOrderLine.TotalCost = int.Parse(txtTotalCost.Text);
+        int TotalCost = int.Parse(txtTotalCost.Text);
         //capture customer name
-        AnOrderLine.CustomerName = txtCustomerName.Text;
+        string CustomerName = txtCustomerName.Text;
         //capture date ordered
-        AnOrderLine.DateProcessed = Convert.ToDateTime(txtDateAdded.Text);
+        string DateProcessed = txtDateAdded.Text;
         //store the address in the session object
-        Session["AnOrderLine"] = AnOrderLine;
-        //redirect to the viewer page
-        Response.Redirect("OrderLineViwer.aspx");
+        string Error = "";
+        Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+        if (Error == "")
+        {
+            anOrderLine.CustomerName = CustomerName;
+            anOrderLine.OrderNo = OrderNo;
+            anOrderLine.TotalCost = TotalCost;
+            anOrderLine.DateProcessed = Convert.ToDateTime(DateProcessed);
+            anOrderLine.EquipmentOrdered = EquipmentOrdered;
 
+            Session["AnOrderLine"] = anOrderLine;
+            //redirect to the viewer page
+            Response.Write("OrderLineViwer.aspx");
+
+        }
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
