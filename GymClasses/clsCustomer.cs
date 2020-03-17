@@ -103,7 +103,7 @@ namespace GymClasses
             if (DB.Count == 1)
             {
                 mcustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
-                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["Dateadded"]);
                 mcustomerActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
                 mcustomerFirstName = Convert.ToString(DB.DataTable.Rows[0]["CustomerFirstName"]);
                 mcustomerlastName = Convert.ToString(DB.DataTable.Rows[0]["CustomerLastName"]);
@@ -117,6 +117,72 @@ namespace GymClasses
                 //return false indicating a problem
                 return false;
             }
+        }
+
+        public string Valid(string customerFirstName, string customerLastName, string customerUserName, string dateadded)
+        {
+            //create a string variable to store the error 
+            String Error = "";
+            //create a temp variable to store the data value
+            DateTime DateTemp;
+            //if the customer first name is blank
+            if (customerFirstName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The customer first name may not be blank: ";
+            }
+            //if the customer first name is greater then 30
+            if (customerFirstName.Length > 30)
+            {
+                //record the error
+                Error = Error + "The first name cant be greater the 30 characters";
+            }
+            try
+            {            
+            //copy the dateadded value to the datetemp vaariable
+            DateTemp = Convert.ToDateTime(dateadded);
+            if (DateTemp < DateTime.Now.Date)
+            {
+                //record the weeor 
+                Error = Error + "The data cannot be past: ";
+            }
+            //check to see if the date is greater then todays date
+            if (DateTemp > DateTime.Now.Date)
+            {
+                //record the error
+                Error = Error + "The date cannot be in the future";
+            } }
+            catch
+            {
+                //record the error
+                Error = Error + "the date was not a valid date";
+            }
+            //if the customer last name is blank
+            if (customerLastName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The customer last name may not be blank: ";
+            }
+            //if the customer first name is greater then 30
+            if (customerLastName.Length > 30)
+            {
+                //record the error
+                Error = Error + "The last name cant be greater the 30 characters";
+            }
+            //if the customer user name is blank
+            if (customerUserName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The customer username may not be blank: ";
+            }
+            //if the customer first name is greater then 30
+            if (customerUserName.Length > 30)
+            {
+                //record the error
+                Error = Error + "The username cant be greater the 30 characters";
+            }
+            //return the error message
+            return Error; 
         }
     }
 }

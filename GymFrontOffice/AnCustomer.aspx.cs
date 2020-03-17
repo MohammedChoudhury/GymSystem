@@ -17,22 +17,40 @@ public partial class AnCustomer : System.Web.UI.Page
     {
         //create a new instance of clsCustomer
         clsCustomer AnCustomer = new clsCustomer();
-        //capture the customer id
-        AnCustomer.customerID = int.Parse(txtCustomerID.Text);
-        //capture the customer username
-        AnCustomer.customerUserName = txtCustomerUN.Text;
-        //capture the customer first name
-        AnCustomer.customerFirstName = txtCustomerFN.Text;
-        //capture the customer last name
-        AnCustomer.customerlastName = txtCustomerLN.Text;
-        //capture date added
-        AnCustomer.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
-        //store the id in the session objct
-        Session["AnCustomer"] = AnCustomer;
-        //redirect to the viewer page
-        Response.Redirect("CustomerViewer.aspx");
-           
-
+        //capture the first name
+        string CustomerFirstName = txtCustomerFN.Text;
+        //capture the last name
+        string CustomerLastName = txtCustomerLN.Text;
+        //capture the user name
+        string CustomerUserName = txtCustomerUN.Text;
+        //capture the date added
+        string Dateadded = txtDateAdded.Text;
+        //variable to store any error message
+        string Error = "";
+        //validate the data
+        Error = AnCustomer.Valid(CustomerFirstName, CustomerLastName, CustomerUserName, Dateadded);
+        if (Error == "")
+        {
+            //capture the customer id
+            //AnCustomer.customerID = int.Parse(txtCustomerID.Text);
+            //capture the customer username
+            AnCustomer.customerUserName = CustomerFirstName;
+            //capture the customer first name
+            AnCustomer.customerFirstName = CustomerLastName;
+            //capture the customer last name
+            AnCustomer.customerlastName = CustomerUserName;
+            //capture date added
+            AnCustomer.DateAdded = Convert.ToDateTime(Dateadded);
+            //store the id in the session objct
+            Session["AnCustomer"] = AnCustomer;
+            //redirect to the viewer page
+            Response.Write("CustomerViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void tbnCancel_Click(object sender, EventArgs e)
