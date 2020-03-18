@@ -19,24 +19,23 @@ public partial class AnOrderLine : System.Web.UI.Page
     {
         //create a new instance of clsOrderline
         clsOrderLine anOrderLine = new clsOrderLine();
-        //capture the order no
-        int OrderNo = int.Parse(txtOrderNo.Text);
+       
         //capture the equipment ordered 
         string EquipmentOrdered = txtEquipmentOrdered.Text;
-        //capture the total cost
-        int TotalCost = int.Parse(txtTotalCost.Text);
+        
+        
         //capture customer name
         string CustomerName = txtCustomerName.Text;
         //capture date ordered
-        string DateProcessed = txtDateAdded.Text;
+        string DateProcessed = txtDateProcessed.Text;
         //store the address in the session object
         string Error = "";
-        Error = anOrderLine.Valid(CustomerName, OrderNo, TotalCost, DateProcessed, EquipmentOrdered);
+        Error = anOrderLine.Valid(CustomerName, DateProcessed, EquipmentOrdered);
         if (Error == "")
         {
             anOrderLine.CustomerName = CustomerName;
-            anOrderLine.OrderNo = OrderNo;
-            anOrderLine.TotalCost = TotalCost;
+          
+          
             anOrderLine.DateProcessed = Convert.ToDateTime(DateProcessed);
             anOrderLine.EquipmentOrdered = EquipmentOrdered;
 
@@ -45,9 +44,36 @@ public partial class AnOrderLine : System.Web.UI.Page
             Response.Write("OrderLineViwer.aspx");
 
         }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        clsOrderLine anOrderLine = new clsOrderLine();
+        Int32 OrderNo;
+        Boolean Found = false;
+        OrderNo = Convert.ToInt32(txtOrderNo.Text);
+        Found = anOrderLine.Find(OrderNo);
+        if (Found == true)
+        {
+            txtOrderNo.Text = anOrderLine.OrderNo.ToString();
+            txtCustomerName.Text = anOrderLine.CustomerName;
+            txtDateProcessed.Text = anOrderLine.DateProcessed.ToString();
+            txtEquipmentOrdered.Text = anOrderLine.EquipmentOrdered;
+            txtTotalCost.Text = anOrderLine.TotalCost.ToString();
+        }
+    }
+
+    protected void chkProcessed_CheckedChanged(object sender, EventArgs e)
     {
 
     }
