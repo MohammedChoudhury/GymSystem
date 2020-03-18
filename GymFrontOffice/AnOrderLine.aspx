@@ -10,7 +10,8 @@
     <form id="form1" runat="server">
         <div>
             Order No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtOrderNo" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtOrderNo" runat="server" Width="98px"></asp:TextBox>
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Find" />
             <br />
             <br />
             Equipment Ordered&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtEquipmentOrdered" runat="server"></asp:TextBox>
@@ -24,13 +25,14 @@
             <asp:TextBox ID="txtCustomerName" runat="server"></asp:TextBox>
             <br />
             <br />
-            Date Added&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtDateAdded" runat="server"></asp:TextBox>
+            Date Processed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:TextBox ID="txtDateProcessed" runat="server"></asp:TextBox>
             <br />
             <br />
             Order Processed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:CheckBox ID="chkProcessed" runat="server" />
+            <asp:CheckBox ID="chkProcessed" runat="server" OnCheckedChanged="chkProcessed_CheckedChanged" />
             <br />
+            <asp:Label ID="lblError" runat="server" BackColor="White" ForeColor="Red"></asp:Label>
             <br />
             <br />
             <asp:Button ID="btnOK" runat="server" Text="OK" Width="60px" OnClick="btnOK_Click" />

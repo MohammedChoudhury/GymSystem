@@ -130,36 +130,11 @@ namespace GymClasses
         }
 
 
-        public string Valid(string customerName, int orderNo, int totalCost, string dateProcessed, string equipmentOrdered)
+        public string Valid(string customerName, string dateProcessed, string equipmentOrdered)
         {
             String Error = "";
             DateTime DateTemp;
 
-
-
-            if (orderNo.Equals(0))
-            {
-                Error = Error + "The order no may not be blank: ";
-            }
-
-            if (orderNo.Equals(7))
-            {
-                Error = Error + "The order no must not be more than 6 numbers: ";
-
-
-            }
-
-            if (totalCost.Equals(0))
-            {
-                Error = Error + "The totalCost may not be blank: ";
-            }
-
-            if (orderNo.Equals(7))
-            {
-                Error = Error + "The order no must not be more than 6 numbers: ";
-
-
-            }
 
             try
             {
