@@ -20,7 +20,7 @@ public partial class AnEquipment : System.Web.UI.Page
         string EquipmentDescription = txtEquipmentDescription.Text;
         string EquipmentColour = txtEquipmentColour.Text;
         string EquipmentDateAdded = txtDateAdded.Text;
-        string EquipmentPrice = txtEquipmentPrice.Text;
+        Int32 EquipmentPrice = Convert.ToInt32(txtEquipmentPrice.Text);
         string Error = "";
         Error = AnEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
         if (Error == "")
@@ -28,7 +28,7 @@ public partial class AnEquipment : System.Web.UI.Page
             AnEquipment.EquipmentDescription = EquipmentDescription;
             AnEquipment.EquipmentColour = EquipmentColour;
             AnEquipment.EquipmentDateAdded = Convert.ToDateTime(EquipmentDateAdded);
-            AnEquipment.EquipmentPrice = Convert.ToInt32(EquipmentPrice);
+           // AnEquipment.EquipmentPrice = Convert.ToInt32(EquipmentPrice);
             Session["AnEquipment"] = AnEquipment;
             Response.Write("EquipmentViewer.aspx");
         }
@@ -38,16 +38,13 @@ public partial class AnEquipment : System.Web.UI.Page
         }
         Response.Write("EquipmentViewer.aspx");
 
-
-
     }
 
     protected void tbnCancel_Click(object sender, EventArgs e)
     {
 
     }
-   
-
+ 
     protected void tbnFind_Click(object sender, EventArgs e)
     {
         clsEquipment AnEquipment = new clsEquipment();

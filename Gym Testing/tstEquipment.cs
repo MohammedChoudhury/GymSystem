@@ -426,9 +426,9 @@ namespace Gym_Testing
             Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
             Assert.AreNotEqual(Error, "");
         }
-        
 
-        [TestMethod]
+
+       [TestMethod]
 
         public void EquipmentPriceMinLessOne()
         {
