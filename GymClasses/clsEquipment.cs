@@ -127,7 +127,7 @@ namespace GymClasses
 
         
 
-        public string Valid(string EquipmentDescription, string EquipmentColour, string EquipmentDateAdded, int EquipmentPrice)
+        public string Valid(string EquipmentDescription, string EquipmentColour, string EquipmentDateAdded, Int32 EquipmentPrice)
         {
             string Error = "";
             DateTime DateTemp;
