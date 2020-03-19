@@ -44,26 +44,20 @@ namespace GymClasses
             {
 
 
+                
+
+                    clsOrderLine anOrderLine = new clsOrderLine();
 
 
-                clsOrderLine TestItem = new clsOrderLine();
-
-
-                TestItem.CustomerName = "Julie Mitchell";
-                TestItem.EquipmentOrdered = "Protein powder";
-                TestItem.OrderNo = 5;
-                TestItem.DateProcessed = DateTime.Now.Date;
-                TestItem.OrderProcessed = true;
-                TestItem.TotalCost = 20;
-                mOrderLineList.Add(TestItem);
-                TestItem = new clsOrderLine();
-                TestItem.CustomerName = "Bill Joyce";
-                TestItem.EquipmentOrdered = "Weights";
-                TestItem.OrderNo = 3;
-                TestItem.DateProcessed = DateTime.Now.Date;
-                TestItem.OrderProcessed = true;
-                TestItem.TotalCost = 30;
-                mOrderLineList.Add(TestItem);
+                anOrderLine.OrderProcessed = Convert.ToBoolean(DB.DataTable.Rows[Index]["Active"]);
+                anOrderLine.OrderNo = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderNo"]);
+                anOrderLine.CustomerName = Convert.ToString(DB.DataTable.Rows[Index]["CustomerName"]);
+                anOrderLine.DateProcessed = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateProcessed"]);
+                anOrderLine.EquipmentOrdered = Convert.ToString(DB.DataTable.Rows[Index]["EquipmentOrdered"]);
+                anOrderLine.TotalCost = Convert.ToInt32(DB.DataTable.Rows[Index]["TotalCost"]);
+                    mOrderLineList.Add(anOrderLine);
+                Index++;
+                }
             }
         }
 
@@ -73,6 +67,4 @@ namespace GymClasses
 
 
 
-
     }
-}

@@ -1,15 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using GymClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Gym_Testing
 {
     [TestClass]
-    public class tstOrderLine
+    public class TstOrderLine
     {
 
-        string CustomerName = "Mary Jones";
-        string EquipmentOrdered = "Protein powder";
+        string CustomerName = "Emma Wang";
+        string EquipmentOrdered = "Weights";
         string DateProcessed = DateTime.Now.Date.ToString();
 
 
@@ -220,73 +221,73 @@ namespace Gym_Testing
 
 
         [TestMethod]
-        public void DateOrderedExtremeMin()
+        public void DateProcessedExtremeMin()
         {
             clsOrderLine anOrderLine = new clsOrderLine();
             String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(-100);
-            string DateOrdered = TestDate.ToString();
+            string DateProcessed = TestDate.ToString();
             Error = anOrderLine.Valid(CustomerName, DateProcessed, EquipmentOrdered);
             Assert.AreNotEqual(Error, "");
         }
 
 
         [TestMethod]
-        public void DateOrderedMinLessOne()
+        public void DateProcessedMinLessOne()
         {
             clsOrderLine anOrderLine = new clsOrderLine();
             String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(-1);
-            String DateOrdered = TestDate.ToString();
+            String DateProcessed = TestDate.ToString();
             Error = anOrderLine.Valid(CustomerName, DateProcessed, EquipmentOrdered);
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
-        public void DateOrderedMin()
+        public void DateProcessedMin()
         {
             clsOrderLine anOrderLine = new clsOrderLine();
             String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
-            string DateOrdered = TestDate.ToString();
+            string DateProcessed = TestDate.ToString();
             Error = anOrderLine.Valid(CustomerName, DateProcessed, EquipmentOrdered);
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void DateOrderedMinPlusOne()
+        public void DateProcessedMinPlusOne()
         {
             clsOrderLine anOrderLine = new clsOrderLine();
             String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(1);
-            string DateOrdered = TestDate.ToString();
+            string DateProcessed = TestDate.ToString();
             Error = anOrderLine.Valid(CustomerName, DateProcessed, EquipmentOrdered);
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void DateOrderedExtremeMax()
+        public void DateProcessedExtremeMax()
         {
             clsOrderLine anOrderLine = new clsOrderLine();
             String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(100);
-            string DateOrdered = TestDate.ToString();
+            string DateProcessed = TestDate.ToString();
             Error = anOrderLine.Valid(CustomerName, DateProcessed, EquipmentOrdered);
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
 
-        public void DateOrderedInvalidData()
+        public void DateProcessedInvalidData()
         {
             clsOrderLine anOrderLine = new clsOrderLine();
             String Error = "";
@@ -485,7 +486,28 @@ namespace Gym_Testing
             Assert.AreEqual(Error, "");
         }
 
+        [TestMethod]
+        public void ListAndCountOK ()
+        {
+            clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
+            List<clsOrderLine> TestList = new List<clsOrderLine>();
+            clsOrderLine TestItem = new clsOrderLine();
+            TestItem.OrderNo = 1;
+            TestItem.CustomerName = "Emma Wang";
+            TestItem.TotalCost = 5;
+            TestItem.EquipmentOrdered = "Weights";
+            TestItem.OrderProcessed = true;
+            TestItem.DateProcessed = DateTime.Now.Date;
+            TestList.Add(TestItem);
+            AllOrderLines.OrderLineList = TestList;
+            Assert.AreEqual(AllOrderLines.Count, TestList.Count);
 
+
+
+
+
+
+        }
 
 
 

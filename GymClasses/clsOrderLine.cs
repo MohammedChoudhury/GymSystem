@@ -119,7 +119,7 @@ namespace GymClasses
                 mTotalCost = Convert.ToInt16(DB.DataTable.Rows[0]["TotalCost"]);
                 mCustomerName = Convert.ToString(DB.DataTable.Rows[0]["CustomerName"]);
                 mOrderProcessed = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderProcessed"]);
-                mDateProcessed = Convert.ToDateTime(DB.DataTable.Rows[0]["16/09/2019"]);
+                mDateProcessed = Convert.ToDateTime(DB.DataTable.Rows[0]["DateProcessed"]);
 
                 return true;
             }
