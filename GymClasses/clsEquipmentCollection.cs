@@ -41,17 +41,18 @@ namespace GymClasses
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblEquipment_SelectAll");
             RecordCount = DB.Count;
+            mEquipmentList = new List<clsEquipment>();
             while (Index < RecordCount)
             {
 
                 
                 clsEquipment AnEquipment = new clsEquipment();
-                AnEquipment.EquipmentNo = Convert.ToInt32(DB.DataTable.Rows[0]["EquipmentNo"]);
-                AnEquipment.EquipmentPrice = Convert.ToInt32(DB.DataTable.Rows[0]["EquipmentPrice"]);
-                AnEquipment.EquipmentDescription = Convert.ToString(DB.DataTable.Rows[0]["EquipmentDescription"]);
-                AnEquipment.EquipmentColour = Convert.ToString(DB.DataTable.Rows[0]["EquipmentColour"]);
-                AnEquipment.EquipmentDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["EquipmentDateAdded"]);
-                AnEquipment.EquipmentAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["EquipmentAvailable"]);
+                AnEquipment.EquipmentNo = Convert.ToInt32(DB.DataTable.Rows[Index]["EquipmentNo"]);
+                AnEquipment.EquipmentPrice = Convert.ToInt32(DB.DataTable.Rows[Index]["EquipmentPrice"]);
+                AnEquipment.EquipmentDescription = Convert.ToString(DB.DataTable.Rows[Index]["EquipmentDescription"]);
+                AnEquipment.EquipmentColour = Convert.ToString(DB.DataTable.Rows[Index]["EquipmentColour"]);
+                AnEquipment.EquipmentDateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["EquipmentDateAdded"]);
+                AnEquipment.EquipmentAvailable = Convert.ToBoolean(DB.DataTable.Rows[Index]["EquipmentAvailable"]);
                 mEquipmentList.Add(AnEquipment);
                 Index++;
             }
