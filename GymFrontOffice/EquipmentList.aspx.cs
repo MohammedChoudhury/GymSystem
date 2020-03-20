@@ -7,21 +7,26 @@ using System.Web.UI.WebControls;
 
 public partial class EquipmentList : System.Web.UI.Page
 {
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack == false)
         {
-            DisplayEquipments();
+            DisplayEquipment();
         }
     }
 
-
-    void DisplayEquipments()
+    void DisplayEquipment()
     {
-        GymClasses.clsEquipmentCollection Equipments = new GymClasses.clsEquipmentCollection();
-        Equipments.DataSource = Equipments.EquipmentList;
-        Equipments.DataValueField = "EquipmentNo";
-        lstEquipments.DataTextField = "EquipmentDescription";
-        lstEquipments.DataBind();
+        GymClasses.clsEquipmentCollection Equipment = new GymClasses.clsEquipmentCollection();
+        lstEquipmentList.DataSource = Equipment.EquipmentList;
+        lstEquipmentList.DataValueField = "EquipmentNo";
+        lstEquipmentList.DataTextField = "EquipmentDescription";
+        lstEquipmentList.DataBind();
+    }
+
+    protected void lstEquipmentList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
     }
 }
