@@ -20,6 +20,8 @@ namespace Gym_Testing
             clsOrderLine anOrderLine = new clsOrderLine();
             Assert.IsNotNull(anOrderLine);
         }
+
+
         [TestMethod]
         public void OrderNoPropertyOK()
         {
@@ -37,7 +39,7 @@ namespace Gym_Testing
         {
             clsOrderLine anOrderLine = new clsOrderLine();
 
-            String TestData = "Protein powder";
+            String TestData = "Weights";
 
             anOrderLine.EquipmentOrdered = TestData;
             Assert.AreEqual(anOrderLine.EquipmentOrdered, TestData);
@@ -48,7 +50,7 @@ namespace Gym_Testing
         {
             clsOrderLine anOrderLine = new clsOrderLine();
 
-            String TestData = "Emily Brown";
+            String TestData = "Emma Wang";
 
             anOrderLine.CustomerName = TestData;
             Assert.AreEqual(anOrderLine.CustomerName, TestData);
@@ -59,7 +61,7 @@ namespace Gym_Testing
         {
             clsOrderLine anOrderLine = new clsOrderLine();
 
-            int TestData = 20;
+            int TestData = 5;
 
             anOrderLine.TotalCost = TestData;
             Assert.AreEqual(anOrderLine.TotalCost, TestData);
@@ -94,7 +96,7 @@ namespace Gym_Testing
         {
             clsOrderLine anOrderLine = new clsOrderLine();
             Boolean Found = false;
-            Int32 OrderNo = 5;
+            Int32 OrderNo = 1;
             Found = anOrderLine.Find(OrderNo);
             Assert.IsTrue(Found);
 
@@ -107,9 +109,9 @@ namespace Gym_Testing
 
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderNo = 5;
+            Int32 OrderNo = 1;
             Found = anOrderLine.Find(OrderNo);
-            if (anOrderLine.OrderNo != 5)
+            if (anOrderLine.OrderNo != 1)
             {
 
                 OK = false;
@@ -125,9 +127,9 @@ namespace Gym_Testing
 
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderNo = 5;
+            Int32 OrderNo = 1;
             Found = anOrderLine.Find(OrderNo);
-            if (anOrderLine.DateProcessed != Convert.ToDateTime("16/09/2019"))
+            if (anOrderLine.DateProcessed != Convert.ToDateTime("2020-01-05"))
             {
 
                 OK = false;
@@ -143,9 +145,9 @@ namespace Gym_Testing
 
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderNo = 5;
+            Int32 OrderNo = 1;
             Found = anOrderLine.Find(OrderNo);
-            if (anOrderLine.TotalCost != 20)
+            if (anOrderLine.TotalCost !=5 )
             {
 
                 OK = false;
@@ -161,9 +163,9 @@ namespace Gym_Testing
 
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderNo = 5;
+            Int32 OrderNo = 1;
             Found = anOrderLine.Find(OrderNo);
-            if (anOrderLine.CustomerName != "Mary Jones")
+            if (anOrderLine.CustomerName != "Emma Wang")
             {
 
                 OK = false;
@@ -179,9 +181,9 @@ namespace Gym_Testing
 
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderNo = 5;
+            Int32 OrderNo = 1;
             Found = anOrderLine.Find(OrderNo);
-            if (anOrderLine.EquipmentOrdered != "Protein powder")
+            if (anOrderLine.EquipmentOrdered != "Weights")
             {
 
                 OK = false;
@@ -198,7 +200,7 @@ namespace Gym_Testing
 
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderNo = 5;
+            Int32 OrderNo = 1;
             Found = anOrderLine.Find(OrderNo);
             if (anOrderLine.OrderProcessed != true)
             {
