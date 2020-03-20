@@ -34,8 +34,6 @@ public partial class AnOrderLine : System.Web.UI.Page
         if (Error == "")
         {
             anOrderLine.CustomerName = CustomerName;
-          
-          
             anOrderLine.DateProcessed = Convert.ToDateTime(DateProcessed);
             anOrderLine.EquipmentOrdered = EquipmentOrdered;
 
