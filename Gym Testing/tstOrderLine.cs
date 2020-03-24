@@ -504,15 +504,53 @@ namespace Gym_Testing
             AllOrderLines.OrderLineList = TestList;
             Assert.AreEqual(AllOrderLines.Count, TestList.Count);
 
-
-
-
-
+        }
+        [TestMethod]
+public void AddMethodOK()
+        {
+            clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
+            clsOrderLine TestItem = new clsOrderLine();
+            Int32 PrimaryKey = 0;
+            TestItem.OrderNo = 1;
+            TestItem.CustomerName = "Emma Wang";
+            TestItem.DateProcessed = DateTime.Now.Date;
+            TestItem.EquipmentOrdered = "Weights";
+            TestItem.TotalCost = 5;
+            TestItem.OrderProcessed = true;
+            AllOrderLines.ThisOrderLine = TestItem;
+            PrimaryKey = AllOrderLines.Add();
+            TestItem.OrderNo = PrimaryKey;
+            AllOrderLines.ThisOrderLine.Find(PrimaryKey);
+            Assert.AreEqual(AllOrderLines.ThisOrderLine, TestItem);
 
         }
 
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
+            clsOrderLine TestItem = new clsOrderLine();
+            Int32 PrimaryKey = 0;
+            TestItem.OrderNo = 1;
+            TestItem.CustomerName = "Emma Wang";
+            TestItem.DateProcessed = DateTime.Now.Date;
+            TestItem.EquipmentOrdered = "Weights";
+            TestItem.TotalCost = 5;
+            TestItem.OrderProcessed = true;
+            AllOrderLines.ThisOrderLine = TestItem;
+            PrimaryKey = AllOrderLines.Add();
+            TestItem.OrderNo = PrimaryKey;
+            AllOrderLines.ThisOrderLine.Find(PrimaryKey);
+            AllOrderLines = Delete();
+            Boolean Found = AllOrderLines.ThisOrderLine.Find(PrimaryKey);
+            Assert.IsFalse(Found);
 
+        }
 
+        private clsOrderLineCollection Delete()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 

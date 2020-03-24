@@ -22,8 +22,6 @@ public partial class AnOrderLine : System.Web.UI.Page
        
         //capture the equipment ordered 
         string EquipmentOrdered = txtEquipmentOrdered.Text;
-        
-        
         //capture customer name
         string CustomerName = txtCustomerName.Text;
         //capture date ordered
@@ -36,10 +34,11 @@ public partial class AnOrderLine : System.Web.UI.Page
             anOrderLine.CustomerName = CustomerName;
             anOrderLine.DateProcessed = Convert.ToDateTime(DateProcessed);
             anOrderLine.EquipmentOrdered = EquipmentOrdered;
-
-            Session["AnOrderLine"] = anOrderLine;
-            //redirect to the viewer page
-            Response.Write("OrderLineViwer.aspx");
+            anOrderLine.OrderProcessed = chkProcessed.Checked;
+            clsOrderLineCollection OrderLineList = new clsOrderLineCollection();
+            OrderLineList.ThisOrderLine = anOrderLine;
+            OrderLineList.Add();
+            Response.Write("OrderLineList.aspx");
 
         }
         else
