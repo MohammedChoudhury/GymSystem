@@ -5,6 +5,9 @@ namespace GymClasses
 {
     public class clsOrderLineCollection
     {
+        List<clsOrderLine> mOrderLineList = new List<clsOrderLine>();
+        clsOrderLine mThisOrderLine = new clsOrderLine();
+
         public List<clsOrderLine> OrderLineList
         {
             get
@@ -30,8 +33,18 @@ namespace GymClasses
 
             }
         }
-        public clsOrderLine ThisOrderLine { get; set; }
-        public List<clsOrderLine> mOrderLineList { get; private set; }
+        public clsOrderLine ThisOrderLine
+        {
+            get
+            {
+                return mThisOrderLine;
+            }
+            set
+            {
+                mThisOrderLine = value;
+            }
+        }
+        
 
         public clsOrderLineCollection()
         {
@@ -59,10 +72,15 @@ namespace GymClasses
                 Index++;
                 }
             }
+
+        public int Add()
+        {
+            mThisOrderLine.OrderNo = 1;
+            return mThisOrderLine.OrderNo;
         }
+    }
 
-
-
+   
 
 
 
