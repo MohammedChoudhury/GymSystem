@@ -5,6 +5,9 @@ namespace GymClasses
 {
     public class clsEquipmentCollection
     {
+        List<clsEquipment> mEquipmentList = new List<clsEquipment>();
+        clsEquipment mThisEquipment = new clsEquipment();
+
         public List<clsEquipment> EquipmentList
         {
             get
@@ -30,8 +33,20 @@ namespace GymClasses
 
             }
         }
-        public clsEquipment ThisEquipment { get; set; }
-        public List<clsEquipment> mEquipmentList { get; private set; }
+
+        public clsEquipment ThisEquipment
+        {
+            get
+            {
+                return mThisEquipment;
+            }
+            set
+            {
+                mThisEquipment = value;
+            }
+        }
+
+        
         public List<clsEquipment> DataSource { get; set; }
 
         public clsEquipmentCollection()
@@ -58,12 +73,23 @@ namespace GymClasses
             }
         }
 
-
-
-
-
-
-
-
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@EquipmentPrice", mThisEquipment.EquipmentPrice);
+            DB.AddParameter("@EquipmentDescription", mThisEquipment.EquipmentDescription);
+            DB.AddParameter("@EquipmentColour", mThisEquipment.EquipmentColour);
+            DB.AddParameter("@EquipmentDateAdded", mThisEquipment.EquipmentDateAdded);
+            DB.AddParameter("@EquipmentAvailable", mThisEquipment.EquipmentPrice);
+            return DB.Execute("sproc_tblEquipment_Insert");
+            
+            
+        }
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@EquipmentNo", mThisEquipment.EquipmentNo);
+            DB.Execute("sproc_tblEquipment_Delete");
+        }
     }
 }

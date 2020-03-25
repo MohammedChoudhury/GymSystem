@@ -36,4 +36,9 @@ public partial class OrderLineList : System.Web.UI.Page
         Session["OrderNo"] = -1;
         Response.Redirect("AnOrderKinw.aspx");
     }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+
+    }
 }

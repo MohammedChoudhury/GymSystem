@@ -65,12 +65,8 @@ namespace Gym_Testing
             TestList.Add(TestEquipment);
             AllEquipments.EquipmentList = TestList;
             Assert.AreEqual(AllEquipments.Count, TestList.Count);
-        
-
-
-
     }
- 
+
         
 
 

@@ -29,4 +29,28 @@ public partial class EquipmentList : System.Web.UI.Page
     {
 
     }
+
+   
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["EquipmentNo"] = -1;
+        Response.Redirect("AnEquipment.aspx");
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        Int32 EquipmentNo;
+        if (lstEquipmentList.SelectedIndex != -1)
+        {
+            EquipmentNo = Convert.ToInt32(lstEquipmentList.SelectedValue);
+            Session["EquipmentNo"] = EquipmentNo;
+            Response.Redirect("DeleteEquipment.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record to delete from the list";
+        }
+
+    }
 }

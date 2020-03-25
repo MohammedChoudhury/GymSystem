@@ -4,16 +4,16 @@ namespace GymClasses
 {
     public class clsEquipment
     {
-        public bool Find(int EquipmentNo)
-        {
-            mEquipmentNo = 1;
-            mEquipmentDateAdded = Convert.ToDateTime("01 / 01 / 2020");
-            mEquipmentDescription = "Weights";
-            mEquipmentColour = "Black";
-            mEquipmentPrice = 100;
-            return true;
+        //public bool Find(int EquipmentNo)
+        //{
+          //  mEquipmentNo = 1;
+           // mEquipmentDateAdded = Convert.ToDateTime("01 / 01 / 2020");
+            //mEquipmentDescription = "Weights";
+            //mEquipmentColour = "Black";
+            //mEquipmentPrice = 100;
+            //return true;
 
-        }
+//        }
         private Int32 mEquipmentNo;
         public Int32 EquipmentNo
         {
@@ -102,7 +102,7 @@ namespace GymClasses
 
         }
 
-        public bool Find2(int EquipmentNo)
+        public bool Find(int EquipmentNo)
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@EquipmentNo", EquipmentNo);
@@ -140,10 +140,26 @@ namespace GymClasses
             {
                 Error = Error + "The Equipment Number must be less than 51 : ";
             }
-            DateTemp = Convert.ToDateTime(EquipmentDateAdded);
-            if (DateTemp < DateTime.Now.Date)
+            
+        
+
+            try
             {
-                Error = Error + "The date cannot be in the past : ";
+                DateTemp = Convert.ToDateTime(EquipmentDateAdded);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+             }
+
+            catch
+             {
+                Error = Error + "The date was not a valid date";
             }
             if (EquipmentColour.Length == 0)
             {
