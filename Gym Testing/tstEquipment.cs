@@ -11,7 +11,7 @@ namespace Gym_Testing
         string EquipmentDescription = "Weights";
         string EquipmentColour = "Black";
         int EquipmentPrice = 100;
-        string EquipmentDateAdded = "01 / 01 / 2020";
+        string EquipmentDateAdded = DateTime.Now.Date.ToString();
 
 
 
@@ -165,7 +165,7 @@ namespace Gym_Testing
             {
                 OK = false;
             }
-            Assert.IsTrue(OK);
+            Assert.IsTrue(Found);
 
         }
         [TestMethod]
@@ -184,7 +184,6 @@ namespace Gym_Testing
 
         }
 
-
         [TestMethod]
         public void ValidMethodOK()
         {
@@ -193,7 +192,6 @@ namespace Gym_Testing
             Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
             Assert.AreEqual(Error, "");
         }
-
 
         [TestMethod]
         public void EquipmentDescriptionMinLessOne()
@@ -506,8 +504,53 @@ namespace Gym_Testing
             Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
             Assert.AreNotEqual(Error, "");
         }
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsEquipmentCollection AllEquipments = new clsEquipmentCollection();
+            clsEquipment TestItem = new clsEquipment();
+            Int32 PrimaryKey = 0;
+            TestItem.EquipmentAvailable = true;
+            TestItem.EquipmentDateAdded = DateTime.Now.Date;
+            TestItem.EquipmentNo = 1;
+            TestItem.EquipmentDescription = "Weights";
+            TestItem.EquipmentColour = "Black";
+            TestItem.EquipmentPrice = 525;
+            AllEquipments.ThisEquipment = TestItem;
+            PrimaryKey = AllEquipments.Add();
+            TestItem.EquipmentNo = PrimaryKey;
+            AllEquipments.ThisEquipment.Find(PrimaryKey);
+            Assert.AreEqual(AllEquipments.ThisEquipment, TestItem);
+
+        }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsEquipmentCollection AllEquipments = new clsEquipmentCollection();
+            clsEquipment TestItem = new clsEquipment();
+            Int32 PrimaryKey = 0;
+            TestItem.EquipmentNo = 1;
+            TestItem.EquipmentColour = "White";
+            TestItem.EquipmentDateAdded = DateTime.Now.Date;
+            TestItem.EquipmentDescription = "Weights";
+            TestItem.EquipmentPrice = 525;
+            TestItem.EquipmentAvailable = true;
+            AllEquipments.ThisEquipment = TestItem;
+            PrimaryKey = AllEquipments.Add();
+            TestItem.EquipmentNo = PrimaryKey;
+            AllEquipments.ThisEquipment.Find(PrimaryKey);
+            AllEquipments = Delete();
+            Boolean Found = AllEquipments.ThisEquipment.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+
+        }
+
+        private clsEquipmentCollection Delete()
+        {
+            throw new NotImplementedException();
+        }
     }
-    }
+}
 
 
     

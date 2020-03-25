@@ -30,13 +30,13 @@ public partial class AnEquipment : System.Web.UI.Page
             AnEquipment.EquipmentDateAdded = Convert.ToDateTime(EquipmentDateAdded);
            // AnEquipment.EquipmentPrice = Convert.ToInt32(EquipmentPrice);
             Session["AnEquipment"] = AnEquipment;
-            Response.Write("EquipmentViewer.aspx");
+            Response.Redirect("EquipmentViewer.aspx");
         }
         else
         {
             lblError.Text = Error;
         }
-        Response.Write("EquipmentViewer.aspx");
+       
 
     }
 
