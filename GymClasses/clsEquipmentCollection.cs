@@ -51,22 +51,16 @@ namespace GymClasses
 
         public clsEquipmentCollection()
         {
-            
-            clsDataConnection DB = new clsDataConnection();
-            DB.Execute("sproc_tblEquipment_SelectAll");
-            PopulateArray(DB);
-            
-           }
-        public void PopulateArray(clsDataConnection DB)
-        {
             Int32 Index = 0;
             Int32 RecordCount = 0;
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblEquipment_SelectAll");
             RecordCount = DB.Count;
             mEquipmentList = new List<clsEquipment>();
             while (Index < RecordCount)
             {
 
-
+                
                 clsEquipment AnEquipment = new clsEquipment();
                 AnEquipment.EquipmentNo = Convert.ToInt32(DB.DataTable.Rows[Index]["EquipmentNo"]);
                 AnEquipment.EquipmentPrice = Convert.ToInt32(DB.DataTable.Rows[Index]["EquipmentPrice"]);
@@ -96,27 +90,6 @@ namespace GymClasses
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@EquipmentNo", mThisEquipment.EquipmentNo);
             DB.Execute("sproc_tblEquipment_Delete");
-            
-        }
-        public void Update()
-        {
-            clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@EquipmentPrice", mThisEquipment.EquipmentPrice);
-            DB.AddParameter("@EquipmentDescription", mThisEquipment.EquipmentDescription);
-            DB.AddParameter("@EquipmentColour", mThisEquipment.EquipmentColour);
-            DB.AddParameter("@EquipmentDateAdded", mThisEquipment.EquipmentDateAdded);
-            DB.AddParameter("@EquipmentAvailable", mThisEquipment.EquipmentPrice);
-            DB.Execute("sproc_tblEquipment_Update");
-        }
-
-        
-
-        public void ReportByEquipmentDescription(string EquipmentDescription)
-        {
-            clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@EquipmentDescription", EquipmentDescription);
-            DB.Execute("sproc_tblEquipment_FilterByEquipmentDescription");
-            PopulateArray(DB);
         }
     }
 }

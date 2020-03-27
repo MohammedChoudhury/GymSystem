@@ -549,74 +549,7 @@ namespace Gym_Testing
         {
             throw new NotImplementedException();
         }
-
-        [TestMethod]
-        public void UpdateMethodOK()
-        {
-            clsEquipmentCollection AllEquipments = new clsEquipmentCollection();
-            clsEquipment TestItem = new clsEquipment();
-            Int32 PrimaryKey = 0;
-            TestItem.EquipmentAvailable = true;
-            TestItem.EquipmentColour = "black";
-            TestItem.EquipmentDateAdded = DateTime.Now.Date;
-            TestItem.EquipmentDescription = "Weights";
-            TestItem.EquipmentPrice = 100;
-            AllEquipments.ThisEquipment = TestItem;
-            PrimaryKey = AllEquipments.Add();
-            TestItem.EquipmentNo = PrimaryKey;
-            TestItem.EquipmentAvailable = false;
-            TestItem.EquipmentColour = "white";
-            TestItem.EquipmentDateAdded = DateTime.Now.Date;
-            TestItem.EquipmentDescription = "Treadmill";
-            TestItem.EquipmentPrice = 150;
-            AllEquipments.ThisEquipment = TestItem;
-            AllEquipments.Update();
-            AllEquipments.ThisEquipment.Find(PrimaryKey);
-            Assert.AreEqual(AllEquipments.ThisEquipment, TestItem);
-
-        }
-
-        [TestMethod]
-        public void ReportByEquipmentDescriptionMethodOL()
-        {
-            clsEquipmentCollection AllEquipments = new clsEquipmentCollection();
-            clsEquipmentCollection FilteredEquipments = new clsEquipmentCollection();
-            FilteredEquipments.ReportByEquipmentDescription("");
-            Assert.AreEqual(AllEquipments.Count, FilteredEquipments.Count);
-        }
-        [TestMethod]
-        public void ReportByEquipmentDescriptionNoneFound()
-        {
-            clsEquipmentCollection FilteredEquipments = new clsEquipmentCollection();
-            FilteredEquipments.ReportByEquipmentDescription("leg machine");
-            Assert.AreEqual(0, FilteredEquipments.Count);
-        }
-        [TestMethod]
-        public void ReportByEquipmentDescriptionTestDataFound()
-        {
-            clsEquipmentCollection FilteredEquipments = new clsEquipmentCollection();
-            Boolean OK = true;
-            FilteredEquipments.ReportByEquipmentDescription("arm machine");
-            if(FilteredEquipments.Count == 2)
-            {
-                if(FilteredEquipments.EquipmentList[0].EquipmentNo != 1)
-                {
-                    OK = false;
-                }
-                if(FilteredEquipments.EquipmentList[1].EquipmentNo != 2)
-                {
-                    OK = false;
-                }
-            }
-            else
-            {
-                OK = false;
-            }
-            Assert.IsTrue(OK);
-        }
-
     }
-
 }
 
 
