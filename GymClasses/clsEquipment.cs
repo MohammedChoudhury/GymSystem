@@ -6,14 +6,14 @@ namespace GymClasses
     {
         //public bool Find(int EquipmentNo)
         //{
-          //  mEquipmentNo = 1;
-           // mEquipmentDateAdded = Convert.ToDateTime("01 / 01 / 2020");
-            //mEquipmentDescription = "Weights";
-            //mEquipmentColour = "Black";
-            //mEquipmentPrice = 100;
-            //return true;
+        //  mEquipmentNo = 1;
+        // mEquipmentDateAdded = Convert.ToDateTime("01 / 01 / 2020");
+        //mEquipmentDescription = "Weights";
+        //mEquipmentColour = "Black";
+        //mEquipmentPrice = 100;
+        //return true;
 
-//        }
+        //        }
         private Int32 mEquipmentNo;
         public Int32 EquipmentNo
         {
@@ -41,7 +41,7 @@ namespace GymClasses
             }
         }
 
-        
+
 
         private DateTime mEquipmentDateAdded;
         public DateTime EquipmentDateAdded
@@ -125,7 +125,7 @@ namespace GymClasses
         }
 
 
-        
+
 
         public string Valid(string EquipmentDescription, string EquipmentColour, string EquipmentDateAdded, Int32 EquipmentPrice)
         {
@@ -134,14 +134,14 @@ namespace GymClasses
             if (EquipmentDescription.Length == 0)
             {
                 Error = Error + "The Equipment Number may not be blank : ";
-            
+
             }
-            if(EquipmentDescription.Length > 51)
+            if (EquipmentDescription.Length > 51)
             {
                 Error = Error + "The Equipment Number must be less than 51 : ";
             }
-            
-        
+
+
 
             try
             {
@@ -155,10 +155,10 @@ namespace GymClasses
                 {
                     Error = Error + "The date cannot be in the future : ";
                 }
-             }
+            }
 
             catch
-             {
+            {
                 Error = Error + "The date was not a valid date";
             }
             if (EquipmentColour.Length == 0)
