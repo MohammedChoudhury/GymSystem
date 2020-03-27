@@ -8,11 +8,28 @@ using GymClasses;
 
 public partial class AnOrderLine : System.Web.UI.Page
 {
+    Int32 OrderNo;
     protected void Page_Load(object sender, EventArgs e)
     {
-        clsOrderLine anOrderLine = new clsOrderLine();
-        anOrderLine = (clsOrderLine)Session["AnOrderLine"];
-        Response.Write(anOrderLine.OrderNo);
+        if (IsPostBack == false)
+        {
+            if (OrderNo != -1)
+            {
+                DisplayOrderLines();
+            }
+        }
+    }
+    void DisplayOrderLines()
+    {
+        clsOrderLineCollection AddressBook = new clsOrderLineCollection();
+        AddressBook.ThisOrderLine.Find(OrderNo);
+        txtOrderNo.Text = AddressBook.ThisOrderLine.OrderNo.ToString();
+        txtCustomerName.Text = AddressBook.ThisOrderLine.CustomerName;
+        txtEquipmentOrdered.Text = AddressBook.ThisOrderLine.EquipmentOrdered;
+        txtTotalCost.Text = AddressBook.ThisOrderLine.TotalCost.ToString();
+        chkProcessed.Checked = AddressBook.ThisOrderLine.OrderProcessed;
+        txtDateProcessed.Text = AddressBook.ThisOrderLine.DateProcessed.ToString();
+
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -31,13 +48,20 @@ public partial class AnOrderLine : System.Web.UI.Page
         Error = anOrderLine.Valid(CustomerName, DateProcessed, EquipmentOrdered);
         if (Error == "")
         {
+            anOrderLine.OrderNo = OrderNo;
             anOrderLine.CustomerName = CustomerName;
             anOrderLine.DateProcessed = Convert.ToDateTime(DateProcessed);
             anOrderLine.EquipmentOrdered = EquipmentOrdered;
             anOrderLine.OrderProcessed = chkProcessed.Checked;
             clsOrderLineCollection OrderLineList = new clsOrderLineCollection();
-            OrderLineList.ThisOrderLine = anOrderLine;
-            OrderLineList.Add();
+
+            if (OrderNo == -1)
+            {
+                OrderLineList.ThisOrderLine.Find(OrderNo);
+                OrderLineList.ThisOrderLine = anOrderLine;
+                OrderLineList.Update();
+            }
+            
             Response.Write("OrderLineList.aspx");
 
         }

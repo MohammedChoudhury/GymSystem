@@ -147,7 +147,7 @@ namespace Gym_Testing
             Boolean OK = true;
             Int32 OrderNo = 1;
             Found = anOrderLine.Find(OrderNo);
-            if (anOrderLine.TotalCost !=5 )
+            if (anOrderLine.TotalCost != 5)
             {
 
                 OK = false;
@@ -345,8 +345,8 @@ namespace Gym_Testing
             clsOrderLine anOrderLine = new clsOrderLine();
             String Error = "";
             string CustomerName = "";
-  
-        CustomerName = CustomerName.PadRight(49, 'a');
+
+            CustomerName = CustomerName.PadRight(49, 'a');
             Error = anOrderLine.Valid(CustomerName, DateProcessed, EquipmentOrdered);
             Assert.AreEqual(Error, "");
         }
@@ -358,8 +358,8 @@ namespace Gym_Testing
             clsOrderLine anOrderLine = new clsOrderLine();
             String Error = "";
             string CustomerName = "";
-     
-        CustomerName = CustomerName.PadRight(50, 'a');
+
+            CustomerName = CustomerName.PadRight(50, 'a');
             Error = anOrderLine.Valid(CustomerName, DateProcessed, EquipmentOrdered);
             Assert.AreEqual(Error, "");
         }
@@ -374,7 +374,7 @@ namespace Gym_Testing
             String Error = "";
             string CustomerName = "";
 
-        CustomerName = CustomerName.PadRight(51, 'a');
+            CustomerName = CustomerName.PadRight(51, 'a');
             Error = anOrderLine.Valid(CustomerName, DateProcessed, EquipmentOrdered);
             Assert.AreNotEqual(Error, "");
         }
@@ -454,7 +454,7 @@ namespace Gym_Testing
             clsOrderLine anOrderLine = new clsOrderLine();
             String Error = "";
             string EquipmentOrdered = "";
-            EquipmentOrdered = EquipmentOrdered.PadRight(50,  'a');
+            EquipmentOrdered = EquipmentOrdered.PadRight(50, 'a');
             Error = anOrderLine.Valid(CustomerName, DateProcessed, EquipmentOrdered);
             Assert.AreEqual(Error, "");
         }
@@ -489,7 +489,7 @@ namespace Gym_Testing
         }
 
         [TestMethod]
-        public void ListAndCountOK ()
+        public void ListAndCountOK()
         {
             clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
             List<clsOrderLine> TestList = new List<clsOrderLine>();
@@ -506,12 +506,12 @@ namespace Gym_Testing
 
         }
         [TestMethod]
-public void AddMethodOK()
+        public void AddMethodOK()
         {
             clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
             clsOrderLine TestItem = new clsOrderLine();
             Int32 PrimaryKey = 0;
-            TestItem.OrderNo = 1;
+
             TestItem.CustomerName = "Emma Wang";
             TestItem.DateProcessed = DateTime.Now.Date;
             TestItem.EquipmentOrdered = "Weights";
@@ -531,7 +531,7 @@ public void AddMethodOK()
             clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
             clsOrderLine TestItem = new clsOrderLine();
             Int32 PrimaryKey = 0;
-            TestItem.OrderNo = 1;
+
             TestItem.CustomerName = "Emma Wang";
             TestItem.DateProcessed = DateTime.Now.Date;
             TestItem.EquipmentOrdered = "Weights";
@@ -551,18 +551,82 @@ public void AddMethodOK()
         {
             throw new NotImplementedException();
         }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
+            clsOrderLine TestItem = new clsOrderLine();
+            Int32 PrimaryKey = 0;
+            TestItem.CustomerName = "Emma Wang";
+            TestItem.DateProcessed = DateTime.Now.Date;
+            TestItem.EquipmentOrdered = "Weights";
+            TestItem.TotalCost = 5;
+            TestItem.OrderProcessed = true;
+            AllOrderLines.ThisOrderLine = TestItem;
+            PrimaryKey = AllOrderLines.Add();
+            TestItem.OrderNo = PrimaryKey;
+            TestItem.CustomerName = "Mark Stone";
+            TestItem.DateProcessed = DateTime.Now.Date;
+            TestItem.EquipmentOrdered = "Treadmill";
+            TestItem.TotalCost = 2;
+            TestItem.OrderProcessed = true;
+            AllOrderLines.ThisOrderLine = TestItem;
+            AllOrderLines.Update();
+            AllOrderLines.ThisOrderLine.Find(PrimaryKey);
+            Assert.AreEqual(AllOrderLines.ThisOrderLine, TestItem);
+
+        }
+
+        [TestMethod]
+
+        public void ReportByCustomerNameOK()
+        {
+            clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
+            clsOrderLineCollection FilteredOrderLines = new clsOrderLineCollection();
+            FilteredOrderLines.ReportByCustomerName("");
+            Assert.AreEqual(AllOrderLines.Count, FilteredOrderLines.Count);
+        }
+
+        [TestMethod]
+
+        public void ReportByCustomerNameNoneFound()
+        {
+            
+            clsOrderLineCollection FilteredOrderLines = new clsOrderLineCollection();
+            FilteredOrderLines.ReportByCustomerName("xxxxxx xxxxxx");
+            Assert.AreEqual(0, FilteredOrderLines.Count);
+        }
+
+        [TestMethod]
+
+        public void ReportByCustomerNameTestDataFound()
+        {
+            clsOrderLineCollection FilteredOrderLines = new clsOrderLineCollection();
+            Boolean OK = true;
+            FilteredOrderLines.ReportByCustomerName("Emma Wang");
+            if (FilteredOrderLines.Count == 2)
+            {
+                if (FilteredOrderLines.OrderLineList[0].OrderNo != 1)
+                {
+                    OK = false;
+
+                }
+                if (FilteredOrderLines.OrderLineList[1].OrderNo != 2)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+
     }
-
-
-
-
-
-
-
-
-
 }
-
 
 
 

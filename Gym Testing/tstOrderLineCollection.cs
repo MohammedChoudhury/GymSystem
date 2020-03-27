@@ -8,6 +8,8 @@ namespace Gym_Testing
     [TestClass]
     public class tstOrderLineCollection
     {
+        
+
         [TestMethod]
         public void InstanceOK()
         
@@ -67,21 +69,12 @@ namespace Gym_Testing
             TestList.Add(TestItem);
             AllOrderLines.OrderLineList = TestList;
             Assert.AreEqual(AllOrderLines.Count, TestList.Count);
-        
-
-
 
     }
- 
 
-
-
-
-
-
-
-
-
-    }
-    }
+       
+        }
+        }
+    
+    
 
