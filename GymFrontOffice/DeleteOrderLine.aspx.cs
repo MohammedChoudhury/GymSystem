@@ -16,7 +16,7 @@ public partial class DeleteOrderLine : System.Web.UI.Page
 
     protected void btnYes_Click(object sender, EventArgs e)
     {
-        clsOrderLineCollection AddressBook = new clsOrderLineCollection():
+        clsOrderLineCollection AddressBook = new clsOrderLineCollection();
         AddressBook.ThisOrderLine.Find(TotalCost);
 
         AddressBook.Delete();
