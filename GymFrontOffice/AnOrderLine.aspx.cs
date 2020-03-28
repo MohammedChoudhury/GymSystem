@@ -8,7 +8,7 @@ using GymClasses;
 
 public partial class AnOrderLine : System.Web.UI.Page
 {
-    Int32 OrderNo;
+   int OrderNo;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack == false)
