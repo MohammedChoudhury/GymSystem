@@ -180,7 +180,7 @@ namespace Gym_Testing
             {
                 OK = false;
             }
-            Assert.IsTrue(OK);
+            Assert.IsTrue(Found);
 
         }
 
@@ -596,14 +596,14 @@ namespace Gym_Testing
         {
             clsEquipmentCollection FilteredEquipments = new clsEquipmentCollection();
             Boolean OK = true;
-            FilteredEquipments.ReportByEquipmentDescription("arm machine");
+            FilteredEquipments.ReportByEquipmentDescription("rope");
             if (FilteredEquipments.Count == 2)
             {
-                if (FilteredEquipments.EquipmentList[0].EquipmentNo != 1)
+                if (FilteredEquipments.EquipmentList[0].EquipmentNo != 17)
                 {
                     OK = false;
                 }
-                if (FilteredEquipments.EquipmentList[1].EquipmentNo != 2)
+                if (FilteredEquipments.EquipmentList[1].EquipmentNo != 24)
                 {
                     OK = false;
                 }

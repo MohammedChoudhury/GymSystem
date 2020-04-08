@@ -66,7 +66,7 @@ public partial class EquipmentList : System.Web.UI.Page
         }
         else
         {
-            lblError.Text = "Please select a record to delete from the list";
+            lblError.Text = "Please select a record to edit from the list";
         }
 
     }
@@ -79,7 +79,7 @@ public partial class EquipmentList : System.Web.UI.Page
         Equipments.ReportByEquipmentDescription(txtFilter.Text);
         lstEquipmentList.DataSource = Equipments.EquipmentList;
         lstEquipmentList.DataValueField = "EquipmentNo";
-        lstEquipmentList.DataTextField = "Equipment Description";
+        lstEquipmentList.DataTextField = "EquipmentDescription";
         lstEquipmentList.DataBind();
 
     }
