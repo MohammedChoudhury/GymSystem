@@ -96,16 +96,17 @@ namespace GymClasses
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@EquipmentNo", mThisEquipment.EquipmentNo);
             DB.Execute("sproc_tblEquipment_Delete");
-
         }
+
         public void Update()
         {
             clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@EquipmentNo", mThisEquipment.EquipmentNo);
             DB.AddParameter("@EquipmentPrice", mThisEquipment.EquipmentPrice);
             DB.AddParameter("@EquipmentDescription", mThisEquipment.EquipmentDescription);
             DB.AddParameter("@EquipmentColour", mThisEquipment.EquipmentColour);
             DB.AddParameter("@EquipmentDateAdded", mThisEquipment.EquipmentDateAdded);
-            DB.AddParameter("@EquipmentAvailable", mThisEquipment.EquipmentPrice);
+            DB.AddParameter("@EquipmentAvailable", mThisEquipment.EquipmentAvailable);
             DB.Execute("sproc_tblEquipment_Update");
         }
 

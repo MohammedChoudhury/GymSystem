@@ -15,7 +15,7 @@
             <br />
             <br />
             Equipment Description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtEquipmentDescription" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtEquipmentDescription" runat="server" OnTextChanged="txtEquipmentDescription_TextChanged"></asp:TextBox>
             <br />
             <br />
             Equipment Colour&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
