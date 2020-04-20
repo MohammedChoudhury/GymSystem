@@ -14,8 +14,7 @@ public partial class EquipmentViewer : System.Web.UI.Page
         clsEquipment AnEquipment = new clsEquipment();
         //get the data from session object 
         AnEquipment = (clsEquipment)Session["AnEquipment"];
-                //display the equipment descritopn
-        Response.Write(AnEquipment.EquipmentDescription);
+        
         //display the equipment colour
         Response.Write(AnEquipment.EquipmentColour);
         //display te date added
@@ -24,6 +23,10 @@ public partial class EquipmentViewer : System.Web.UI.Page
         Response.Write(AnEquipment.EquipmentPrice);
         //dislay the equipment availablilty 
         Response.Write(AnEquipment.EquipmentAvailable);
+        //dislay the equipment equipment number 
+        Response.Write(AnEquipment.EquipmentNo);
+        //display the equipment description
+        Response.Write(AnEquipment.EquipmentDescription);
 
     }
 }

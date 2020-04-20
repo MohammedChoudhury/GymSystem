@@ -29,6 +29,7 @@ public partial class AnEquipment : System.Web.UI.Page
         txtDateAdded.Text = Addressbook.ThisEquipment.EquipmentDateAdded.ToString();
         txtEquipmentColour.Text = Addressbook.ThisEquipment.EquipmentColour;
         txtEquipmentPrice.Text = Addressbook.ThisEquipment.EquipmentPrice.ToString();
+        txtEquipmentDescription.Text = Addressbook.ThisEquipment.EquipmentDescription;
         chkAvailable.Checked = Addressbook.ThisEquipment.EquipmentAvailable;
 
     }
@@ -66,7 +67,7 @@ public partial class AnEquipment : System.Web.UI.Page
                 EquipmentList.Update();
             }
 
-            Response.Redirect("EquipmentViewer.aspx");
+            Response.Redirect("EquipmentList.aspx");
 
         }
         else
@@ -100,6 +101,11 @@ public partial class AnEquipment : System.Web.UI.Page
             txtEquipmentDescription.Text = AnEquipment.EquipmentDescription;
 
         }
+    }
+
+    protected void txtEquipmentDescription_TextChanged(object sender, EventArgs e)
+    {
+
     }
 }
 

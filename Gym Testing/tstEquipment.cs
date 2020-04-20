@@ -445,7 +445,7 @@ namespace Gym_Testing
 
             clsEquipment anEquipment = new clsEquipment();
             string Error = "";
-            int EquipmentPrice = 100;
+            int EquipmentPrice = 1;
             Error = anEquipment.Valid(EquipmentDescription, EquipmentColour, EquipmentDateAdded, EquipmentPrice);
             Assert.AreNotEqual(Error, "");
         }
@@ -539,17 +539,13 @@ namespace Gym_Testing
             PrimaryKey = AllEquipments.Add();
             TestItem.EquipmentNo = PrimaryKey;
             AllEquipments.ThisEquipment.Find(PrimaryKey);
-            AllEquipments = Delete();
+            AllEquipments.Delete();
             Boolean Found = AllEquipments.ThisEquipment.Find(PrimaryKey);
             Assert.IsFalse(Found);
 
         }
 
-        private clsEquipmentCollection Delete()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         [TestMethod]
         public void UpdateMethodOK()
         {
@@ -599,11 +595,11 @@ namespace Gym_Testing
             FilteredEquipments.ReportByEquipmentDescription("rope");
             if (FilteredEquipments.Count == 2)
             {
-                if (FilteredEquipments.EquipmentList[0].EquipmentNo != 17)
+                if (FilteredEquipments.EquipmentList[0].EquipmentNo != 36)
                 {
                     OK = false;
                 }
-                if (FilteredEquipments.EquipmentList[1].EquipmentNo != 24)
+                if (FilteredEquipments.EquipmentList[1].EquipmentNo != 37)
                 {
                     OK = false;
                 }
