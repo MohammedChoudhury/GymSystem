@@ -8,7 +8,7 @@ using GymClasses;
 
 public partial class AnOrderLine : System.Web.UI.Page
 {
-   int OrderNo;
+   Int32 OrderNo;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack == false)
@@ -57,12 +57,18 @@ public partial class AnOrderLine : System.Web.UI.Page
 
             if (OrderNo == -1)
             {
+                OrderLineList.ThisOrderLine = anOrderLine;
+                OrderLineList.Add();
+            }
+
+            else 
+            {
                 OrderLineList.ThisOrderLine.Find(OrderNo);
                 OrderLineList.ThisOrderLine = anOrderLine;
                 OrderLineList.Update();
             }
             
-            Response.Write("OrderLineList.aspx");
+            Response.Redirect("OrderLineList.aspx");
 
         }
         else

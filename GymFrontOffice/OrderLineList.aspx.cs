@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 public partial class OrderLineList : System.Web.UI.Page
 {
     public object txtFilter { get; private set; }
-  
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -35,9 +35,9 @@ public partial class OrderLineList : System.Web.UI.Page
 
     }
 
-    
 
- 
+
+
 
 
     protected void Button2_Click(object sender, EventArgs e)
@@ -67,7 +67,7 @@ public partial class OrderLineList : System.Web.UI.Page
 
     protected void btnEdit_Click(object sender, EventArgs e)
     {
-        int OrderNo;
+        Int32 OrderNo;
         if (lstOrderLineList.SelectedIndex != -1)
         {
             OrderNo = Convert.ToInt32(lstOrderLineList.SelectedValue);
@@ -80,17 +80,9 @@ public partial class OrderLineList : System.Web.UI.Page
         }
     }
 
-    protected void btnApply_Click(object sender, EventArgs e)
-    {
-   
-
-    }
 
 
 
 
-    protected void btnClear_Click(object sender, EventArgs e)
-    {
-     
-    }
+
 }
