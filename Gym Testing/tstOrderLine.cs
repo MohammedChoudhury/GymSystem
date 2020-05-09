@@ -547,10 +547,7 @@ namespace Gym_Testing
 
         }
 
-        private clsOrderLineCollection Delete()
-        {
-            throw new NotImplementedException();
-        }
+     
 
         [TestMethod]
         public void UpdateMethodOK()

@@ -29,8 +29,8 @@
             <asp:TextBox ID="txtDateProcessed" runat="server"></asp:TextBox>
             <br />
             <br />
-            Order Processed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:CheckBox ID="chkProcessed" runat="server" OnCheckedChanged="chkProcessed_CheckedChanged" />
+            &nbsp;&nbsp;&nbsp;&nbsp;<asp:CheckBox ID="chkProcessed" runat="server" OnCheckedChanged="chkProcessed_CheckedChanged" Text="chkProcessed" />
+            &nbsp;
             <br />
             <asp:Label ID="lblError" runat="server" BackColor="White" ForeColor="Red"></asp:Label>
             <br />

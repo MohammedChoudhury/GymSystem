@@ -17,4 +17,9 @@ public partial class _Default : System.Web.UI.Page
     {
 
     }
+
+    protected void ListBox2_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }
