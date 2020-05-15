@@ -150,7 +150,7 @@ namespace Gym_Testing
             //invoke the method
             Found = Ancustomer.Find(customerID);
             //check the property
-            if (Ancustomer.DateAdded != Convert.ToDateTime("03/03/2020"))
+            if (Ancustomer.DateAdded != Convert.ToDateTime("11/05/2020"))
             {
                 OK = false;
             }
