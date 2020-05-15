@@ -96,9 +96,9 @@ namespace GymClasses
             //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
             //add the paramter for the customer id to search for 
-            DB.AddParameter("@customerID", customerID);
+            DB.AddParameter("@CustomerID", customerID);
             //execute the stored procedure
-            DB.Execute("sproc_tblCustomer_FilterBycustomerID");
+            DB.Execute("sproc_tblCustomer_FilterByCustomerID");
             //if one record is found (there should be either one or zero
             if (DB.Count == 1)
             {

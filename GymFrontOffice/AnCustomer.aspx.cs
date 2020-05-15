@@ -8,8 +8,36 @@ using GymClasses;
 
 public partial class AnCustomer : System.Web.UI.Page
 {
+    //variable to store the primary keye with page level scope
+    Int32 CustomerID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the customerid to be processed
+        CustomerID = Convert.ToInt32(Session["CustomerID"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record to be proccessed
+            if (CustomerID != -1)
+            {
+                //display the current data for the record
+                DisplayCustomer();
+            }
+        }
+    }
+
+    private void DisplayCustomer()
+    {
+        //create an instance of the customerbook
+        clsCustomerCollection CustomerBook = new clsCustomerCollection();
+        //find the record to update
+        CustomerBook.ThisCustomer.Find(CustomerID);
+        //display the data for this record
+        txtCustomerID.Text = CustomerBook.ThisCustomer.customerID.ToString();
+        txtCustomerUN.Text = CustomerBook.ThisCustomer.customerUserName;
+        txtCustomerFN.Text = CustomerBook.ThisCustomer.customerFirstName;
+        txtCustomerLN.Text = CustomerBook.ThisCustomer.customerlastName;
+        txtDateAdded.Text = CustomerBook.ThisCustomer.DateAdded.ToString();
+        checkActive.Checked = CustomerBook.ThisCustomer.customerActive;
 
     }
 
@@ -32,19 +60,40 @@ public partial class AnCustomer : System.Web.UI.Page
         if (Error == "")
         {
             //capture the customer id
-            //AnCustomer.customerID = int.Parse(txtCustomerID.Text);
+            AnCustomer.customerID = CustomerID;
             //capture the customer username
-            AnCustomer.customerUserName = CustomerFirstName;
+            AnCustomer.customerUserName = CustomerUserName;
             //capture the customer first name
-            AnCustomer.customerFirstName = CustomerLastName;
+            AnCustomer.customerFirstName = CustomerFirstName;
             //capture the customer last name
-            AnCustomer.customerlastName = CustomerUserName;
+            AnCustomer.customerlastName = CustomerLastName;
             //capture date added
             AnCustomer.DateAdded = Convert.ToDateTime(Dateadded);
-            //store the id in the session objct
-            Session["AnCustomer"] = AnCustomer;
-            //redirect to the viewer page
-            Response.Write("CustomerViewer.aspx");
+            //capture active
+            AnCustomer.customerActive = checkActive.Checked;
+            //create a new instance of the customer collection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+
+            //if this is anew record i.e customerID i.e CustomerID = -1 then add the data
+            if (CustomerID == -1)
+            {
+                //set the thiscustomer propewrty
+                CustomerList.ThisCustomer = AnCustomer;
+                //add the new record
+                CustomerList.Add();
+            }
+            //ptherwise it must be an update
+            else
+            {
+                //find the record
+                CustomerList.ThisCustomer.Find(CustomerID);
+                //set the thiscustomer propety
+                CustomerList.ThisCustomer = AnCustomer;
+                //update the record
+               // CustomerList.Update();
+            }
+            //redirec back to the listpage
+            Response.Redirect("CustomerList.aspx");
         }
         else
         {
